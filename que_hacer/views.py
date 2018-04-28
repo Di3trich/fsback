@@ -1,5 +1,8 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Grupo, QueHacer
 
 
 def index(request):
-    return HttpResponse('aplicacion que hacer')
+    grupo_lista = Grupo.objects.all()
+    contexto = {'grupo_lista': grupo_lista}
+    return render(request, 'que_hacer/index.html', contexto)

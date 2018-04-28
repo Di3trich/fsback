@@ -1,0 +1,23 @@
+{% if grupo_lista %}
+<div>
+    {% for grupo in grupo_lista %}
+    <section>
+        <header>
+            <h1>{{ grupo.nombre }}</h1>
+        </header>
+        <section>
+            <ul>
+                {% for queHacer in grupo.quehacer_set.all %}
+                <li> {{ queHacer.tarea }} </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <footer>
+            Tenemos {{ grupo.quehacer_set.count }} cosas por hacer en total.
+        </footer>
+    </section>
+    {% endfor %}
+</div>
+{% else %}
+<p>No hay grupo de lista que Haceres</p>
+{% endif %}
