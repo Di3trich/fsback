@@ -4,6 +4,10 @@
     <section>
         <header>
             <h1>{{ grupo.nombre }}</h1>
+            <form action="{% url 'que_hacer:registro' grupo.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="tarea" autofocus=""/>
+            </form>
         </header>
         <section>
             <ul>
