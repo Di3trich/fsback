@@ -10,6 +10,8 @@
 *.sublime-workspace
 /.vscode
 
+# Database
+db.sqlite3
 
 # misc
 __pycache__/
