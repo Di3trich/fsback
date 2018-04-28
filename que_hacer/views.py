@@ -24,3 +24,9 @@ def realizado(request, quehacer_id):
     queHacer.realizado = not queHacer.realizado
     queHacer.save()
     return HttpResponseRedirect(reverse('que_hacer:index'))
+
+
+def eliminar(request, quehacer_id):
+    queHacer = QueHacer.objects.get(pk=quehacer_id)
+    queHacer.delete()
+    return HttpResponseRedirect(reverse('que_hacer:index'))
