@@ -15,7 +15,7 @@
                 <li>
                     <form action="{% url 'que_hacer:realizado' queHacer.id %}" method="POST" style="display: inline;">
                         {% csrf_token %}
-                        <input type="checkbox" name="realizado" {% if queHacer.realizado %} checked {% endif %} onchange="this.form.submit()" />
+                        <input type="checkbox" {% if queHacer.realizado %} checked {% endif %} onchange="this.form.submit()" />
                     </form>
                     {{ queHacer.tarea }}
                     <form action="{% url 'que_hacer:eliminar' queHacer.id %}" method="POST" style="display: inline;">
@@ -27,7 +27,7 @@
             </ul>
         </section>
         <footer>
-            Tenemos {{ grupo.quehacer_set.count }} cosas por hacer en total.
+            Tenemos {{ grupo.quehacer_set.count }} cosas por hacer en total y {{ grupo.completados }} están completadas.
         </footer>
     </section>
     {% endfor %}

@@ -5,6 +5,9 @@ class Grupo(models.Model):
     nombre = models.CharField(max_length=200)
     fecha = models.DateField('fecha de publicacion')
 
+    def completados(self):
+        return self.quehacer_set.filter(realizado=True).count()
+
     def __str__(self):
         return self.nombre
 
