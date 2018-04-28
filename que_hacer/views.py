@@ -17,3 +17,10 @@ def registro(request, grupo_id):
     grupo = Grupo.objects.get(pk=grupo_id)
     grupo.quehacer_set.create(tarea=request.POST['tarea'])
     return HttpResponseRedirect(reverse('que_hacer:index'))
+
+
+def realizado(request, quehacer_id):
+    queHacer = QueHacer.objects.get(pk=quehacer_id)
+    queHacer.realizado = not queHacer.realizado
+    queHacer.save()
+    return HttpResponseRedirect(reverse('que_hacer:index'))
