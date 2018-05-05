@@ -4,7 +4,7 @@
     <section>
         <header>
             <h1>{{ grupo.nombre }}</h1>
-            <form action="{% url 'que_hacer:registro' grupo.id %}" method="POST">
+            <form action="{% url 'registro' grupo.id %}" method="POST">
                 {% csrf_token %}
                 <input type="text" name="tarea" autofocus="" />
             </form>
@@ -13,12 +13,12 @@
             <ul>
                 {% for queHacer in grupo.quehacer_set.all %}
                 <li>
-                    <form action="{% url 'que_hacer:realizado' queHacer.id %}" method="POST" style="display: inline;">
+                    <form action="{% url 'realizado' queHacer.id %}" method="POST" style="display: inline;">
                         {% csrf_token %}
                         <input type="checkbox" {% if queHacer.realizado %} checked {% endif %} onchange="this.form.submit()" />
                     </form>
                     {{ queHacer.tarea }}
-                    <form action="{% url 'que_hacer:eliminar' queHacer.id %}" method="POST" style="display: inline;">
+                    <form action="{% url 'eliminar' queHacer.id %}" method="POST" style="display: inline;">
                         {% csrf_token %}
                         <input type="submit" value="x" {% if queHacer.realizado %} checked {% endif %} />
                     </form>
